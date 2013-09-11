@@ -34,6 +34,7 @@
     enableHover: true, //disable if you want to personalize hover event with callback
     enableCounter: true, //disable if you just want use buttons
     enableTracking: false, //tracking with google analitycs
+	returnPassthru: false,
     hover: function(){}, //personalize hover event with this callback function
     hide: function(){}, //personalize hide event with this callback function
     click: function(){}, //personalize click event with this callback function
@@ -501,8 +502,7 @@
     template = this.options.template;
     if(this.options.shorterTotal === true){  //format number like 1.2k or 5M
       total = this.shorterTotal(total);
-    }
-    
+    } 
     if(template !== ''){  //if there is a template
       template = template.replace('{total}', total);
       $(this.element).html(template);
@@ -514,6 +514,7 @@
                             '</div>'
                           );
     }
+	
   };
   
   /* format total numbers like 1.2k or 5M

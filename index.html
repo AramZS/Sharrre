@@ -5,8 +5,14 @@
 	<title>Sharrre.com</title>
   <meta name="description" content="Sharrre" />
   <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-  <script src="jquery.sharrre-1.3.1.js"></script>
+  <script src="jquery.sharrre.js"></script>
   <script>
+  var vTotal = 4;
+  function getShareTotal(totalCount){
+	var total = totalCount;
+	vTotal = 2;
+	return vTotal;
+  }
   $(function(){
     $('#demo1').sharrre({
       share: {
@@ -29,16 +35,40 @@
       }
     });
     
-    $('#demo2').sharrre({
+ /**   $('#demo2').sharrre({
       share: {
         googlePlus: true,
         facebook: true,
         twitter: true
       },
       url: 'http://sharrre.com',
+	  shorterTotal: false,
       enableHover: false
     });
+	**/
+	$('#demo2').sharrre({
+      share: {
+        googlePlus: true,
+        facebook: true,
+        twitter: true
+      },
+      url: 'http://sharrre.com',
+	  shorterTotal: false,
+      enableHover: false,
+	  returnPassthru: true,
+	  render: function(api, options){
+		console.log(options.total);
+		var sTotal = options.total;
+		console.log(sTotal);
+		getShareTotal(sTotal);
+		  
+	  }
+    });
+	/**var sTotal = '{total}';**/
+	
+	
   });
+alert(vTotal);
   </script>
   <style type="text/css">
   #demo1.sharrre {
